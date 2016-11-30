@@ -1,6 +1,11 @@
 import java.util.Iterator;
 import java.util.TreeSet;
 
+/**
+ * This class implements a TreeSet
+ *
+ * @author Thomas Binu and Savitha Jayasankar
+ **/
 public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     private Node<E> root;
@@ -24,6 +29,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         if (root == null) {
             root = new Node<E>(e);
             size++;
+            return true;
         } else {
 
             Node<E> parent;
@@ -57,8 +63,6 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
             }
         }
-
-        return false;
     }
 
     public boolean remove(E e) {
@@ -66,6 +70,9 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         // Hack that needs to be removed
         isElementFound = true;
         deleteRecursive(root, e);
+        if (isElementFound) {
+            size--;
+        }
         return isElementFound;
 
     }
@@ -177,16 +184,26 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     }
 
     public void clear() {
+
+        root = null;
+        size = 0;
     }
 
-    public boolean contains(E e) {
+    @Override
+    public boolean contains(Object o) {
 
-        TSIterator<E> iterator = (TSIterator<E>) iterator();
-        while (iterator.hasNext()) {
-            if (e.compareTo(iterator.next()) == 0) {
+        Comparable comparable = (Comparable) o;
+        Node currentNode = root;
+        while (currentNode != null) {
+            if (comparable.compareTo(currentNode.e) > 0) {
+                currentNode = currentNode.right;
+            } else if (comparable.compareTo(currentNode.e) < 0) {
+                currentNode = currentNode.left;
+            } else {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -198,6 +215,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     public int size() {
         return size;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new TSIterator<E>(root);

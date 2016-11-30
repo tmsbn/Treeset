@@ -1,5 +1,6 @@
 import java.util.Iterator;
 
+
 class TSIterator<E extends Comparable<E>> implements Iterator<E>{
 
     private Node<E> root;
