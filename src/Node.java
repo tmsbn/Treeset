@@ -5,11 +5,11 @@ class Node<E extends Comparable<E>> {
     Node<E> left;
     Node<E> parent;
 
-    Node root;
-
+    
     Node(E e) {
         this.e = e;
     }
+
     boolean contains(E e) {
 
         return true;
