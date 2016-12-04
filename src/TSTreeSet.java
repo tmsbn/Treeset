@@ -25,46 +25,44 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     @Override
     public boolean add(E e) {
 
-        if (!contains(e)) {
-            if (root == null) {
-                root = new Node<E>(e);
-                size++;
-                return true;
-            } else {
 
-                Node<E> parent;
-                Node<E> currentNode = root;
+        if (root == null) {
+            root = new Node<E>(e);
+            size++;
+            return true;
+        } else {
 
-                while (true) {
+            Node<E> parent;
+            Node<E> currentNode = root;
 
-                    parent = currentNode;
-                    if (currentNode.e.compareTo(e) > 0) {
+            while (true) {
 
-                        currentNode = currentNode.left;
-                        if (currentNode == null) {
-                            parent.left = new Node<E>(e);
-                            parent.left.parent = parent;
-                            size++;
-                            return true;
-                        }
+                parent = currentNode;
+                if (currentNode.e.compareTo(e) > 0) {
 
-                    } else if (currentNode.e.compareTo(e) < 0) {
-
-                        currentNode = currentNode.right;
-                        if (currentNode == null) {
-                            parent.right = new Node<E>(e);
-                            parent.right.parent = parent;
-                            size++;
-                            return true;
-                        }
-                    } else if (currentNode.e.compareTo(e) == 0) {
-                        return false;
+                    currentNode = currentNode.left;
+                    if (currentNode == null) {
+                        parent.left = new Node<E>(e);
+                        parent.left.parent = parent;
+                        size++;
+                        return true;
                     }
 
+                } else if (currentNode.e.compareTo(e) < 0) {
+
+                    currentNode = currentNode.right;
+                    if (currentNode == null) {
+                        parent.right = new Node<E>(e);
+                        parent.right.parent = parent;
+                        size++;
+                        return true;
+                    }
+                } else if (currentNode.e.compareTo(e) == 0) {
+                    return false;
                 }
+
             }
-        } else
-            return false;
+        }
     }
 
     public boolean remove(E e) {
