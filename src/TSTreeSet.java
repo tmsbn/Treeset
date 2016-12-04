@@ -10,15 +10,10 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     private Node<E> root;
     int size = 0;
-    Node hashTable[];
 
     final int MAX_ELEMENTS = 300000;
 
     boolean isElementFound = true;
-
-    public TSTreeSet() {
-        hashTable = new Node[MAX_ELEMENTS];
-    }
 
     public void init() {
     }
@@ -31,10 +26,11 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
 
         if (root == null) {
+
             root = new Node<E>(e);
-            hashTable[(Integer.parseInt((String) e))] = new Node<E>(e);
             size++;
             return true;
+
         } else {
 
             Node<E> parent;
@@ -48,7 +44,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
                     currentNode = currentNode.left;
                     if (currentNode == null) {
                         parent.left = new Node<E>(e);
-                        hashTable[(Integer.parseInt((String) e))] = new Node<E>(e);
+
                         parent.left.parent = parent;
                         size++;
                         return true;
@@ -58,8 +54,9 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
                     currentNode = currentNode.right;
                     if (currentNode == null) {
+
                         parent.right = new Node<E>(e);
-                        hashTable[(Integer.parseInt((String) e))] = new Node<E>(e);
+
                         parent.right.parent = parent;
                         size++;
                         return true;
@@ -167,6 +164,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         if (node == null) {
             return;
         }
+
         inOrderTraversal(node.left);
         System.out.println(node.e.toString());
         inOrderTraversal(node.right);
@@ -199,30 +197,24 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     @Override
     public boolean contains(Object o) {
-        Node nodes = hashTable[Math.abs(Integer.parseInt((String) o))];
-        Comparable comparable = (Comparable) o;
-        if (comparable.compareTo(nodes.e) == 0)
-            return true;
-        else
-            return false;
 
-//        Comparable comparable = (Comparable) o;
-//        Node currentNode = root;
-//        while (currentNode != null) {
-//            if (comparable.compareTo(currentNode.e) > 0) {
-//                currentNode = currentNode.right;
-//            } else if (comparable.compareTo(currentNode.e) < 0) {
-//                currentNode = currentNode.left;
-//            } else {
-//                return true;
-//            }
-//        }
-//
-//        return false;
+        Comparable comparable = (Comparable) o;
+        Node currentNode = root;
+        while (currentNode != null) {
+
+            if (comparable.compareTo(currentNode.e) > 0) {
+                currentNode = currentNode.right;
+            } else if (comparable.compareTo(currentNode.e) < 0) {
+                currentNode = currentNode.left;
+            } else {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public boolean isEmpty() {
-
         return root == null;
     }
 

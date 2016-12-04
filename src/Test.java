@@ -54,6 +54,7 @@ public class Test {
 
     public void addTest() {
         for (int index = 0; index < MAX_ELEMENTS; index++) {
+
             if (!aTreeSet.add(allObjects[index]))
                 rip("addTest failed " + index, 10);
             if (aTreeSet.size() != index + 1)

@@ -31,7 +31,6 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
 
         } else if (currentNode.right != null) {
 
-            //
             return getMinNode(currentNode.right);
         } else {
 
