@@ -124,17 +124,16 @@ public class Test {
             rip("iterator test failed with not finding all objects", 10);
     }
 
-    public void  executeTest(String whichOne) {
+    public void executeTest(String whichOne) {
         this.whichOne = whichOne;
         iteratorTest();
         delta("	" + whichOne + ":iteratorTest");
 
-         clearAll();
+        clearAll();
         delta("	" + whichOne + ":clearAll");
         addTest();
         delta("	" + whichOne + ":addTest");
 
-       // ((TSTreeSet)aTreeSet).print();
         contains();
         delta("	" + whichOne + ":contains");
         clearAll();
@@ -148,6 +147,14 @@ public class Test {
     }
 
     public void testIt() {
+
+//        start();
+//        String allObjects[] = new String[MAX_ELEMENTS];
+//        for (int index = 0; index < MAX_ELEMENTS; index++) {
+//            allObjects[index] = "" + index;
+//        }
+//        end("array test");
+
         start();
         initArray();
         (init(new TreeSet())).executeTest("TreeSet");
