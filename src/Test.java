@@ -149,12 +149,6 @@ public class Test {
 
     public void testIt() {
 
-//        start();
-//        String allObjects[] = new String[MAX_ELEMENTS];
-//        for (int index = 0; index < MAX_ELEMENTS; index++) {
-//            allObjects[index] = "" + index;
-//        }
-//        end("array test");
 
         start();
         initArray();
@@ -162,6 +156,7 @@ public class Test {
         initArraySorted();
         (init(new TreeSet())).executeTest("TreeSet");
         end("TreeSet");
+
         start();
         initArray();
         (init(new TSTreeSet())).executeTest("TMS TreeSet");

@@ -3,7 +3,7 @@ import java.util.Iterator;
 /**
  * Created by tmsbn on 11/28/16.
  */
-public class Launcher {
+public class CustomTest {
 
     public static void main(String args[]) {
 
@@ -22,7 +22,7 @@ public class Launcher {
         }
 
         // TreeSet
-        if(tsTreeSet.contains("Tom")){
+        if(tsTreeSet.contains(1)){
             System.out.println("Contains works");
         }
 

@@ -2,7 +2,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
- * This class implements a TreeSet
+ * This class implements a TreeSet using Binary Search Tree
  *
  * @author Thomas Binu and Savitha Jayasankar
  **/
@@ -11,12 +11,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     private Node<E> root;
     int size = 0;
 
-    final int MAX_ELEMENTS = 300000;
-
     boolean isElementFound = true;
-
-    public void init() {
-    }
 
     /**
      * Iterative Algorithm to add elements to TreeSet
@@ -70,9 +65,13 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     }
 
+    /**
+     * Remove the element from the treeset while maintaining the BST order
+     * @param e
+     * @return
+     */
     public boolean remove(E e) {
 
-        // Hack that needs to be removed
         isElementFound = true;
         deleteRecursive(root, e);
         if (isElementFound) {
@@ -82,6 +81,12 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     }
 
+    /**
+     * Recursive method to delete a node
+     * @param parentNode
+     * @param e
+     * @return
+     */
     public Node<E> deleteRecursive(Node<E> parentNode, E e) {
 
         if (parentNode == null) {
@@ -126,11 +131,11 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         }
     }
 
-
-    public void print() {
-        printUsingInOrderSucessor();
-    }
-
+    /**
+     * Get Inorder successor of the node
+     * @param currentNode
+     * @return
+     */
     private Node inOrderSuccessor(Node currentNode) {
 
         if (currentNode == null) {
@@ -151,6 +156,9 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         }
     }
 
+    /**
+     * Print the tree set with inorder traversal
+     */
     private void printUsingInOrderSucessor() {
 
         Node tempNode = null;
@@ -168,9 +176,13 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
         inOrderTraversal(node.left);
         System.out.println(node.e.toString());
         inOrderTraversal(node.right);
-
     }
 
+    /**
+     * Search for the node with the minimum value
+     * @param node
+     * @return
+     */
     private Node<E> getMinNode(Node node) {
 
         Node minNode = node;

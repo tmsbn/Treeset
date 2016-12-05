@@ -10,16 +10,8 @@ class Node<E extends Comparable<E>> {
         this.e = e;
     }
 
-    boolean contains(E e) {
-
-        return true;
-    }
-
-    public void parse(E e[]) {
-    }
-
     public String toString() {
 
-        return "";
+        return e.toString();
     }
 }

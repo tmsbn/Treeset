@@ -1,6 +1,10 @@
 import java.util.Iterator;
 
-
+/**
+ * This class implements in Iterator
+ *
+ * @author Thomas Binu and Savitha Jayasankar
+ **/
 class TSIterator<E extends Comparable<E>> implements Iterator<E>{
 
     private Node<E> root;
@@ -10,10 +14,18 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
         this.root = root;
     }
 
+    /**
+     * Checks if the next element when traversing tree in the sorted order
+     * @return
+     */
     public boolean hasNext() {
         return getInOrderSuccessor(currentNode) != null;
     }
 
+    /**
+     * Returns the next element when traversing tree in the sorted order
+     * @return
+     */
     public E next() {
         currentNode = getInOrderSuccessor(currentNode);
         return currentNode.e;
@@ -24,6 +36,11 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
 
     }
 
+    /**
+     * Get Inorder successor of the node
+     * @param currentNode
+     * @return
+     */
     private Node<E> getInOrderSuccessor(Node<E> currentNode) {
 
         if (currentNode == null) {
@@ -45,6 +62,11 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
         }
     }
 
+    /**
+     * Search for the node with the minimum value
+     * @param node
+     * @return
+     */
     private Node<E> getMinNode(Node<E> node) {
 
         if(node == null)
