@@ -136,7 +136,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
      * @param currentNode
      * @return
      */
-    private Node inOrderSuccessor(Node currentNode) {
+    private Node<E> inOrderSuccessor(Node<E> currentNode) {
 
         if (currentNode == null) {
             return getMinNode(root);
@@ -145,7 +145,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
             return getMinNode(currentNode.right);
         } else {
 
-            Node parent = currentNode.parent;
+            Node<E> parent = currentNode.parent;
 
             //While the current node is a the right child of a parent node
             while (parent != null && currentNode == parent.right) {
@@ -161,13 +161,13 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
      */
     private void printUsingInOrderSucessor() {
 
-        Node tempNode = null;
+        Node<E> tempNode = null;
         while ((tempNode = inOrderSuccessor(tempNode)) != null) {
             System.out.println(tempNode.e);
         }
     }
 
-    private void inOrderTraversal(Node node) {
+    private void inOrderTraversal(Node<E> node) {
 
         if (node == null) {
             return;
@@ -183,9 +183,9 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
      * @param node
      * @return
      */
-    private Node<E> getMinNode(Node node) {
+    private Node<E> getMinNode(Node<E> node) {
 
-        Node minNode = node;
+        Node<E> minNode = node;
         while (minNode.left != null) {
 
             minNode = minNode.left;
@@ -211,7 +211,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     public boolean contains(Object o) {
 
         Comparable comparable = (Comparable) o;
-        Node currentNode = root;
+        Node<E> currentNode = root;
         while (currentNode != null) {
 
             if (comparable.compareTo(currentNode.e) > 0) {
