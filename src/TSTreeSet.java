@@ -10,7 +10,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     private Node<E> root;
     int size = 0;
-
+    boolean isNullAdded = false;
     boolean isElementFound = true;
 
     /**
@@ -19,8 +19,12 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     @Override
     public boolean add(E e) {
 
+        if (isNullAdded) {
+            isNullAdded = true;
+            size++;
+            return true;
 
-        if (root == null) {
+        } else if (root == null) {
 
             root = new Node<E>(e);
             size++;
@@ -67,6 +71,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     /**
      * Remove the element from the treeset while maintaining the BST order
+     *
      * @param e
      * @return
      */
@@ -83,6 +88,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     /**
      * Recursive method to delete a node
+     *
      * @param parentNode
      * @param e
      * @return
@@ -133,6 +139,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     /**
      * Get Inorder successor of the node
+     *
      * @param currentNode
      * @return
      */
@@ -180,6 +187,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     /**
      * Search for the node with the minimum value
+     *
      * @param node
      * @return
      */
@@ -205,38 +213,44 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
         root = null;
         size = 0;
+        isNullAdded = false;
     }
 
     @Override
     public boolean contains(Object o) {
 
-        Comparable comparable = (Comparable) o;
-        Node<E> currentNode = root;
-        while (currentNode != null) {
+        if(o == null){
+            return isNullAdded;
+        }else {
 
-            if (comparable.compareTo(currentNode.e) > 0) {
-                currentNode = currentNode.right;
-            } else if (comparable.compareTo(currentNode.e) < 0) {
-                currentNode = currentNode.left;
-            } else {
-                return true;
+            Comparable<E> comparable = (Comparable<E>) o;
+            Node<E> currentNode = root;
+            while (currentNode != null) {
+
+                if (comparable.compareTo(currentNode.e) > 0) {
+                    currentNode = currentNode.right;
+                } else if (comparable.compareTo(currentNode.e) < 0) {
+                    currentNode = currentNode.left;
+                } else {
+                    return true;
+                }
             }
+            return false;
         }
-
-        return false;
     }
 
     public boolean isEmpty() {
-        return root == null;
+        return !isNullAdded && root == null;
+
     }
 
     public int size() {
-        return size;
+        return size ++;
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new TSIterator<E>(root);
+        return new TSIterator<E>(isNullAdded, root);
     }
 
 }

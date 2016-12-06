@@ -9,9 +9,11 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
 
     private Node<E> root;
     private Node<E> currentNode = null;
+    private boolean isNullAdded;
 
-    public TSIterator(Node<E> root) {
+    public TSIterator(boolean isNullAdded, Node<E> root) {
         this.root = root;
+        this.isNullAdded = isNullAdded;
     }
 
     /**
@@ -43,7 +45,10 @@ class TSIterator<E extends Comparable<E>> implements Iterator<E>{
      */
     private Node<E> getInOrderSuccessor(Node<E> currentNode) {
 
-        if (currentNode == null) {
+        if(isNullAdded){
+            isNullAdded = false;
+            return null;
+        }if (currentNode == null) {
             return getMinNode(root);
 
         } else if (currentNode.right != null) {
