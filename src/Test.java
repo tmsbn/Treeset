@@ -150,12 +150,12 @@ public class Test {
     public void testIt() {
 
 
-//        start();
-//        initArray();
-//        (init(new TreeSet())).executeTest("TreeSet");
-//        initArraySorted();
-//        (init(new TreeSet())).executeTest("TreeSet");
-//        end("TreeSet");
+        start();
+        initArray();
+        (init(new TreeSet())).executeTest("TreeSet");
+        initArraySorted();
+        (init(new TreeSet())).executeTest("TreeSet");
+        end("TreeSet");
 
         start();
         initArray();

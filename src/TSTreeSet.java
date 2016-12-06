@@ -223,7 +223,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
         if(o == null){
             return isNullAdded;
-        }else {
+        }else if(o instanceof Comparable) {
 
             Comparable<E> comparable = (Comparable<E>) o;
             Node<E> currentNode = root;
@@ -239,6 +239,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
             }
             return false;
         }
+        return false;
     }
 
     public boolean isEmpty() {
