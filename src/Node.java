@@ -1,3 +1,9 @@
+/**
+ * This class implements Node for TreeSet
+ *
+ * @author Thomas Binu and Savitha Jayasankar
+ **/
+
 class Node<E extends Comparable<E>> {
 
     E e;
@@ -5,7 +11,7 @@ class Node<E extends Comparable<E>> {
     Node<E> left;
     Node<E> parent;
 
-    
+
     Node(E e) {
         this.e = e;
     }

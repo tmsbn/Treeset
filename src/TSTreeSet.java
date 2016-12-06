@@ -12,6 +12,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     int size = 0;
     boolean isNullAdded = false;
     boolean isElementFound = true;
+    private static final long serialVersionUID = 7526472295622776147L;
 
     /**
      * Iterative Algorithm to add elements to TreeSet
