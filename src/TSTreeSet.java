@@ -217,6 +217,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean contains(Object o) {
 
         if(o == null){
