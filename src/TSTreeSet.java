@@ -19,7 +19,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     @Override
     public boolean add(E e) {
 
-        if (isNullAdded) {
+        if (e == null && !isNullAdded) {
             isNullAdded = true;
             size++;
             return true;
@@ -245,7 +245,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
     }
 
     public int size() {
-        return size ++;
+        return size;
     }
 
     @Override
