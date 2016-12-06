@@ -159,9 +159,9 @@ public class Test {
 
         start();
         initArray();
-        (init(new TSTreeSet())).executeTest("TMS TreeSet");
+        (init(new HpTreeSet())).executeTest("TMS TreeSet");
         initArraySorted();
-        (init(new TSTreeSet())).executeTest("TMS TreeSet");
+        (init(new HpTreeSet())).executeTest("TMS TreeSet");
         end("TMS TreeSet");
     }
 

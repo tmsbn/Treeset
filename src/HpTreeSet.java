@@ -6,7 +6,7 @@ import java.util.TreeSet;
  *
  * @author Thomas Binu and Savitha Jayasankar
  **/
-public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
+public class HpTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     private Node<E> root;
     int size = 0;
@@ -253,7 +253,7 @@ public class TSTreeSet<E extends Comparable<E>> extends TreeSet<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new TSIterator<E>(isNullAdded, root);
+        return new HpIterator<E>(isNullAdded, root);
     }
 
 }

@@ -5,13 +5,13 @@ import java.util.Iterator;
  *
  * @author Thomas Binu and Savitha Jayasankar
  **/
-class TSIterator<E extends Comparable<E>> implements Iterator<E>{
+class HpIterator<E extends Comparable<E>> implements Iterator<E>{
 
     private Node<E> root;
     private Node<E> currentNode = null;
     private boolean isNullAdded;
 
-    public TSIterator(boolean isNullAdded, Node<E> root) {
+    public HpIterator(boolean isNullAdded, Node<E> root) {
         this.root = root;
         this.isNullAdded = isNullAdded;
     }
